@@ -1,0 +1,33 @@
+<blueprint
+    xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    default-activation="lazy">
+
+    <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.1.0">
+        <command name="eventhandler/list">
+            <action class="com.packt.learning.osgi.command.ListEventHandler">
+                <property name="repository" ref="repository"/>
+
+            </action>
+        </command>
+
+        <command name="eventhandler/add">
+            <action class="com.packt.learning.osgi.command.AddEventHandler">
+                <property name="repository" ref="repository"/>
+
+            </action>
+        </command>
+
+        <command name="eventhandler/remove">
+            <action class="com.packt.learning.osgi.command.RemoveEventHandler">
+                <property name="repository" ref="repository"/>
+
+            </action>
+        </command>
+
+    </command-bundle>
+
+    <bean id="repository" class="com.packt.learning.osgi.command.EventHandlerRepository" destroy-method="cleanup">
+        <property name="bundleContext" ref="blueprintBundleContext"/>
+    </bean>
+
+</blueprint>

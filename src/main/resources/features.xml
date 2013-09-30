@@ -1,0 +1,6 @@
+<features name="com.packt.learning.osgi-${project.version}">
+    <feature name="eventhandler-command" version="${project.version}">
+        <feature version="${karaf.version}">eventadmin</feature>
+        <bundle>mvn:org.packt.learning.osgi.code/learning-karaf-eventhandler/${project.version}</bundle>
+    </feature>
+</features>
